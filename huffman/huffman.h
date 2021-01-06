@@ -14,5 +14,5 @@ void encode();
 QString readcode();
 QString readtext();
 void decode();
-
+void writetree(QString tmp);
 #endif // HUFFMAN_H

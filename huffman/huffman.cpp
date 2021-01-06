@@ -15,6 +15,7 @@ struct tnode
     }
 };
 struct tnode* head=NULL;
+bool therearetree=false;
 priority_queue<struct tnode>q;
 class huffman
 {
@@ -32,6 +33,7 @@ struct tnode* Creatnode(char ch,double fre)
     T->lchild = NULL;
     T->rchild = NULL;
     q.push(*T);
+
     return (T);
 }
 struct tnode* creat()
@@ -67,6 +69,8 @@ struct tnode* init()
         q.push(*T);
     }
     head=T;
+    therearetree=true;
+
     return T;
 }
 void search(struct tnode* T, QCharRef name,QString &str,bool &flag)//i是层数，cod为字符的编码
@@ -97,8 +101,41 @@ void search(struct tnode* T, QCharRef name,QString &str,bool &flag)//i是层数�
             str.chop(1);
     }
 }
+void writetree(QString tmp)
+{
+    QFile tobewrite("D:/huffman/htmTree.txt");
+    tobewrite.open(QIODevice::ReadWrite | QIODevice::Text);
+    QTextStream ou(&tobewrite);
+    ou<<tmp;
+    tobewrite.close();
+}
+void read()
+{
+    QFile htm("D:/huffman/htmTree.txt");
+    htm.open(QIODevice::ReadOnly | QIODevice::Text);
+    QTextStream in(&htm);
+    QString N=in.readLine();
+    int n=N.toInt();
+    QString tmp;
+    while(n--)
+    {
+        tmp=in.readLine();
+        QStringList ans=tmp.split(" ");
+        string alp1=ans[0].toStdString();
+        char alp=alp1[0];
+        double fre=ans[1].toDouble();
+        Creatnode(alp,fre);
+    }
+    init();
+    htm.close();
+}
+
 void encode()//编码
 {
+    if(!therearetree)
+    {
+        read();
+    }
     struct tnode* T=head;
     QFile file("D:/huffman/ToBeTran.txt");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -119,6 +156,15 @@ QString readcode()
     QString fileName = "D:/huffman/CodeFile.txt";QString str;QFile file(fileName);
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QTextStream in(&file);str=in.readLine();
+    for(int i=1;i*50<=str.size();i++)
+    {
+        str.insert(i*50-1,QString("\n"));
+    }
+    QFile tobewrite("D:/huffman/CodePrint.txt");
+    tobewrite.open(QIODevice::ReadWrite | QIODevice::Text);
+    QTextStream ou(&tobewrite);
+    ou<<str;
+    tobewrite.close();
     file.close();
     return str;
 }

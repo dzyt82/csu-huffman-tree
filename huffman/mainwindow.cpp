@@ -24,6 +24,8 @@ void MainWindow::on_pushButton_clicked()
                                      "5");
     int n=n1.toInt();
     QString alp,fre;
+    QString tmp;
+    tmp.append(QString(QString::number(n)+"\n"));
     while(n--)
     {
         alp = QInputDialog::getText(this, "建立一个新节点",
@@ -31,13 +33,16 @@ void MainWindow::on_pushButton_clicked()
                                                        QLineEdit::Normal,
                                                        "a",
                                                        &isok);
+        tmp.append(QString(alp+" "));
     if(isok){
         fre = QInputDialog::getText(this, "建立一个新节点",
                                                            "请输入对应的频率",
                                                            QLineEdit::Normal,
                                                            "0.01",
                                                            &isok);
+        tmp.append(QString(fre+"\n"));
     }
+    writetree(tmp);
     string s=alp.toStdString();
     Creatnode(s[0],fre.toDouble());
     }
