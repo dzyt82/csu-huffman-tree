@@ -5,6 +5,8 @@
 
 ~~codeprint写入，感觉好像很简单（但是我懒~~
 
+我觉得我写的这个htmtree应该不是老师的意思（但是我真的懒得改了）
+
 更加友好的交互，比方说往按钮加图片什么的
 
 [点这里下载压缩包](https://github.com/dzyt82/csu-huffman-tree/releases/tag/1.1)
