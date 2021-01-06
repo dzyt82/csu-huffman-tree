@@ -13,12 +13,12 @@
 实验报告里huffman tree实现(非常简单)
 
 请用qt5.9打开文件夹
-~~# 未实现功能
-写入htmtree和从htmtree中读取（懒得卷了
+~~# 未实现功能~~
+~~写入htmtree和从htmtree中读取（懒得卷了~~
 
-~~codeprint写入，感觉好像很简单（但是我懒
+~~codeprint写入，感觉好像很简单（但是我懒~~
 
-~~更加友好的交互，比方说往按钮加图片什么的
+~~更加友好的交互，比方说往按钮加图片什么的~~
 
 ~~[点这里下载压缩包](https://github.com/dzyt82/csu-huffman-tree/releases/tag/1.0)~~
 
